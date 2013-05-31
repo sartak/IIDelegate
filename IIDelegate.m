@@ -32,6 +32,8 @@ static int instanceCount = 0;
         free(descriptions);
     }
 
+    free(protocolList);
+
     return [typeDictionary copy];
 }
 
@@ -66,6 +68,10 @@ static int instanceCount = 0;
         NSArray *methods = [requiredMethods keysSortedByValueUsingSelector:@selector(compare:)];
         [NSException raise:NSInternalInconsistencyException format:@"Required protocol methods (%@) are missing", [methods componentsJoinedByString:@", "]];
     }
+
+    [requiredTypes release];
+    [optionalTypes release];
+    [requiredMethods release];
 }
 
 +(id) delegateForProtocols:(NSArray *)protocols withMethods:(NSDictionary *)methods {
@@ -82,7 +88,7 @@ static int instanceCount = 0;
     objc_registerClassPair(class);
 
     id instance = [[class alloc] init];
-    return instance;
+    return [instance autorelease];
 }
 
 +(id) delegateForProtocol:(Protocol *)protocol withMethods:(NSDictionary *)methods {
@@ -107,6 +113,11 @@ static int instanceCount = 0;
 
 -(NSString *)description {
     return [NSString stringWithFormat:@"%@ <%@>", [super description], [IIDelegate protocolsForClass:[self class]]];
+}
+
+-(void) dealloc {
+    [super dealloc];
+    objc_disposeClassPair([self class]);
 }
 
 @end
