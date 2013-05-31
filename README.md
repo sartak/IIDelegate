@@ -1,4 +1,8 @@
-Create a `UITableViewDataSource` delegate on the fly:
+`[IIDelegate delegateForProtocol:@protocol(...) withMethods:@{name: block}]` creates a new class, at runtime, that conforms with the given protocol and responds to the specified methods. It then returns an instance of that new class so you can plug it into a UIKit delegate or elsewhere.
+
+This means you can use Objective C's closure capabilities to bind actions directly to data, rather than needing to fake it by adding class attributes on your view controller.
+
+## Create a `UITableViewDataSource` delegate on the fly:
 
     -(id) dataSourceForArray:(NSArray *)array {
         return [IIDelegate delegateForProtocol:@protocol(UITableViewDataSource)
@@ -23,7 +27,7 @@ Create a `UITableViewDataSource` delegate on the fly:
         self.prefectureTable.dataSource = [self dataSourceForArray:prefectures];
     }
 
-Create a `UIActionSheetDelegate` on the fly:
+## Create a `UIActionSheetDelegate` on the fly:
 
     id delegate = [IIDelegate delegateForProtocol:@protocol(UIActionSheetDelegate)
                                       withMethods:@{
