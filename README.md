@@ -2,6 +2,8 @@
 
 This means you can use Objective C's closure capabilities to bind actions directly to data, rather than needing to fake it by adding class attributes on your view controller.
 
+Unfortunately you can't use `@selector(...)` as an `NSDictionary` key, so `IIDelegate` expects strings describing selectors instead. Sorry. :(
+
 ### Create a `UITableViewDataSource` delegate on the fly:
 
     -(id) dataSourceForArray:(NSArray *)array {
