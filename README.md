@@ -33,7 +33,7 @@ Unfortunately you can't use `@selector(...)` as an `NSDictionary` key, so `IIDel
 
     -(IBAction) tappedDelete:(Record *)record {
         id delegate = [IIDelegate delegateForProtocol:@protocol(UIActionSheetDelegate)
-                                        withMethods:@{
+                                          withMethods:@{
             @"actionSheet:willDismissWithButtonIndex:":^(id _delegate, UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == actionSheet.destructiveButtonIndex) {
                     [record delete];
@@ -45,9 +45,9 @@ Unfortunately you can't use `@selector(...)` as an `NSDictionary` key, so `IIDel
         }];
 
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"You Serious?"
-                                                                delegate:delegate
+                                                                 delegate:delegate
                                                         cancelButtonTitle:@"Cancel"
-                                                destructiveButtonTitle:@"Delete"
+                                                   destructiveButtonTitle:@"Delete"
                                                         otherButtonTitles:@"Never", nil];
         [actionSheet showInView:self.view];
     }
