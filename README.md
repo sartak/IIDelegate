@@ -1,6 +1,6 @@
 ## Leave it to `IIDelegate`
 
-`[IIDelegate delegateForProtocol:@protocol(...) withMethods:@{...}]` creates a new class, at runtime, that conforms to the given protocol and responds to the specified methods. It then returns an instance of that new class so you can plug it into a UIKit delegate or elsewhere. **This converts a protocol-based API into a block-based API.**
+`[IIDelegate delegateForProtocol:@protocol(...) withMethods:@{...}]` creates a new class, at runtime, that conforms to the given protocol and responds to the specified methods. It then returns an instance of that new class so you can plug it into a UIKit delegate or elsewhere. **`IIDelegate` converts a protocol-based API into a block-based API.**
 
 This means you can use Objective C's closure capabilities to bind data directly to your actions, rather than needing to fake it by adding hacky attributes on your view controller. `IIDelegate` also saves you from having to litter your delegate code throughout many different methods. If you have ever dealt with multiple instances of `UIAlertView`, `UIActionSheet`, or `UITableView` in one view controller, your bones rattle with these pains.
 
