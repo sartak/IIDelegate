@@ -4,7 +4,7 @@
 
 This means you can use Objective C's closure capabilities to bind data directly to your actions, rather than needing to fake it by adding hacky attributes on your view controller. `IIDelegate` also saves you from having to litter your delegate code throughout many different methods. If you have ever dealt with multiple instances of `UIAlertView`, `UIActionSheet`, or `UITableView` in one view controller, your bones rattle with these pains.
 
-There is no way to specify ivars for these delegates. You are expected to use the closure nature of blocks to capture your necessary state. This can of course include capturing `self` with access its properties and methods).
+You can use the closure nature of blocks to capture your necessary state. This can of course include capturing `self` with access its properties and methods. So there's no need to declare ivars.
 
 Unfortunately, Objective C forbids using `@selector(...)` as an `NSDictionary` key, so `IIDelegate` expects strings describing selectors instead. Sorry. :(
 
