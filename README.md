@@ -1,6 +1,6 @@
 `[IIDelegate delegateForProtocol:@protocol(...) withMethods:@{name: block}]` creates a new class, at runtime, that conforms with the given protocol and responds to the specified methods. It then returns an instance of that new class so you can plug it into a UIKit delegate or elsewhere.
 
-This means you can use Objective C's closure capabilities to bind actions directly to data, rather than needing to fake it by adding class attributes on your view controller. `IIDelegate` also saves you from having to litter your delegate code throughout multiple different methods. If you've ever dealt with multiple `UIAlertView`s or `UIActionSheet`s in one view controller, you know these pains.
+This means you can use Objective C's closure capabilities to bind actions directly to data, rather than needing to fake it by adding class attributes on your view controller. `IIDelegate` also saves you from having to litter your delegate code throughout multiple different methods. If you've ever dealt with multiple instances of `UIAlertView` or `UIActionSheet` in one view controller, you know these pains.
 
 Unfortunately you can't use `@selector(...)` as an `NSDictionary` key, so `IIDelegate` expects strings describing selectors instead. Sorry. :(
 
