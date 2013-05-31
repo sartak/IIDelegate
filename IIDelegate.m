@@ -1,6 +1,10 @@
 #import "IIDelegate.h"
 #import <objc/runtime.h>
 
+#if __has_feature(objc_arc)
+#error IIDelegate does not support ARC. You must add -fno-obc-arc to the build rules for IIDelegate.m.
+#endif
+
 @implementation IIDelegate
 
 static int instanceCount = 0;
