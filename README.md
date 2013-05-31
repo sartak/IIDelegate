@@ -2,7 +2,7 @@
 
 `[IIDelegate delegateForProtocol:@protocol(...) withMethods:@{name: block}]` creates a new class, at runtime, that conforms to the given protocol and responds to the specified methods. It then returns an instance of that new class so you can plug it into a UIKit delegate or elsewhere.
 
-This means you can use Objective C's closure capabilities to bind data directly to your actions, rather than needing to fake it by adding hacky attributes on your view controller. `IIDelegate` also saves you from having to litter your delegate code throughout multiple different methods. If you have ever dealt with multiple instances of `UIAlertView`, `UIActionSheet`, or `UITableView` in one view controller, your bones rattle with these pains.
+This means you can use Objective C's closure capabilities to bind data directly to your actions, rather than needing to fake it by adding hacky attributes on your view controller. `IIDelegate` also saves you from having to litter your delegate code throughout many different methods. If you have ever dealt with multiple instances of `UIAlertView`, `UIActionSheet`, or `UITableView` in one view controller, your bones rattle with these pains.
 
 There is no way to specify ivars for these delegates. You are expected to use the closure nature of blocks to capture your necessary state. This can of course include capturing `self` with access its properties and methods).
 
