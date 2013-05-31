@@ -2,7 +2,7 @@
 
 This means you can use Objective C's closure capabilities to bind actions directly to data, rather than needing to fake it by adding class attributes on your view controller.
 
-## Create a `UITableViewDataSource` delegate on the fly:
+### Create a `UITableViewDataSource` delegate on the fly:
 
     -(id) dataSourceForArray:(NSArray *)array {
         return [IIDelegate delegateForProtocol:@protocol(UITableViewDataSource)
@@ -27,7 +27,7 @@ This means you can use Objective C's closure capabilities to bind actions direct
         self.prefectureTable.dataSource = [self dataSourceForArray:prefectures];
     }
 
-## Create a `UIActionSheetDelegate` on the fly:
+### Create a `UIActionSheetDelegate` on the fly:
 
     id delegate = [IIDelegate delegateForProtocol:@protocol(UIActionSheetDelegate)
                                       withMethods:@{
