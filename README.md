@@ -8,6 +8,8 @@ You can use the closure nature of blocks to capture your necessary state. This c
 
 Unfortunately, Objective C forbids using `@selector(...)` as an `NSDictionary` key, so `IIDelegate` expects strings describing selectors instead. Sorry. :(
 
+You'll also need to set `-fno-objc-arc` on `IIDelegate.m` because `objc_allocateClassPair` is incompatible with ARC. Boo! (patches very much welcome)
+
 ### Create a `UITableViewDataSource` delegate on the fly:
 
     -(id) dataSourceForArray:(NSArray *)array {
