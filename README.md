@@ -29,21 +29,23 @@ This means you can use Objective C's closure capabilities to bind actions direct
 
 ### Create a `UIActionSheetDelegate` on the fly:
 
-    id delegate = [IIDelegate delegateForProtocol:@protocol(UIActionSheetDelegate)
-                                      withMethods:@{
-        @"actionSheet:willDismissWithButtonIndex:":^(id _delegate, UIActionSheet *actionSheet, NSInteger buttonIndex) {
-            if (buttonIndex == actionSheet.destructiveButtonIndex) {
-                [record delete];
-            }
-            else if (buttonIndex == actionSheet.firstOtherButtonIndex) {
-                [record setImmortal];
-            }
-        },
-    }];
+    -(IBAction) tappedDelete:(Record *)record {
+        id delegate = [IIDelegate delegateForProtocol:@protocol(UIActionSheetDelegate)
+                                        withMethods:@{
+            @"actionSheet:willDismissWithButtonIndex:":^(id _delegate, UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                if (buttonIndex == actionSheet.destructiveButtonIndex) {
+                    [record delete];
+                }
+                else if (buttonIndex == actionSheet.firstOtherButtonIndex) {
+                    [record setImmortal];
+                }
+            },
+        }];
 
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"You Serious?"
-                                                             delegate:delegate
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:@"Delete"
-                                                    otherButtonTitles:@"Never", nil];
-    [actionSheet showInView:self.view];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"You Serious?"
+                                                                delegate:delegate
+                                                        cancelButtonTitle:@"Cancel"
+                                                destructiveButtonTitle:@"Delete"
+                                                        otherButtonTitles:@"Never", nil];
+        [actionSheet showInView:self.view];
+    }
