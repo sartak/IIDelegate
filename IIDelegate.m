@@ -120,8 +120,9 @@ static int instanceCount = 0;
 }
 
 -(void) dealloc {
+    Class class = [self class];
     [super dealloc];
-    objc_disposeClassPair([self class]);
+    objc_disposeClassPair(class);
 }
 
 @end
