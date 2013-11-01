@@ -23,6 +23,11 @@
         for (int i = 0; i < 100; ++i) {
             id delegate = [IIDelegate delegateForProtocol:@protocol(DoNothing) withMethods:@{ @"doNothing":^{} }];
             [delegate doNothing];
+
+            Class class = [IIDelegate delegateClassForProtocol:@protocol(DoNothing)];
+            [class addSelector:@selector(doNothing) withImplementation:^{}];
+            id other = [class finalizeDelegate];
+            [other doNothing];
         }
     }
 }
