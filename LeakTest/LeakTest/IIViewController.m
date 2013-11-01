@@ -28,7 +28,7 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated {
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(runTest:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(runTest:) userInfo:nil repeats:YES];
 }
 
 @end
