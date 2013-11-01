@@ -9,12 +9,20 @@
 #import "IIViewController.h"
 #import "IIDelegate.h"
 
+@protocol DoNothing
+
+-(void) doNothing;
+
+@end
+
+
 @implementation IIViewController
 
 -(void) runTest:(NSTimer *)timer {
     @autoreleasepool {
         for (int i = 0; i < 100; ++i) {
-            [IIDelegate delegateForProtocol:@protocol(UIAlertViewDelegate) withMethods:@{}];
+            id delegate = [IIDelegate delegateForProtocol:@protocol(DoNothing) withMethods:@{ @"doNothing":^{} }];
+            [delegate doNothing];
         }
     }
 }
